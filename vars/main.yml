@@ -7,3 +7,4 @@ kafka__listeners: "{{ (kafka_listeners | length > 0) | ternary(kafka_listeners, 
 kafka__uuid_file: "{{ kafka_home }}/CLUSTER_UUID.lock"
 kafka__config_path: "{{ kafka_config_path | default(kafka_home ~ '/server.properties') }}"
 kafka__opts: "{{ (kafka_opts | type_debug == 'list') | ternary(kafka_opts | join(' '), kafka_opts) }}"
+kafka__advertised_listeners: "{{ (kafka_advertised_listeners | length > 0) | ternary(kafka_advertised_listeners, []) }}"

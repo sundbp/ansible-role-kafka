@@ -36,6 +36,7 @@ kafka_inter_broker_listener_name: PLAINTEXT
 kafka_listeners: []
 #  - PLAINTEXT://:9092
 #  - CONTROLLER://:9093
+kafka_advertised_listeners: []
 
 ## Log retention policy
 kafka_log_retention_hours: 24

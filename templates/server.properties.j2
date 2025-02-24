@@ -49,8 +49,12 @@ inter.broker.listener.name={{ kafka_inter_broker_listener_name }}
 
 # Listener name, hostname and port the broker will advertise to clients.
 # If not set, it uses the value for "listeners".
+{% if kafka__advertised_listeners %}
+advertised.listeners={{ kafka__advertised_listeners | join(',') }}
+{% else %}
 {% if "broker" in kafka_node_roles %}
 advertised.listeners=PLAINTEXT://{{ kafka_node_ip | default(ansible_default_ipv4['address'])}}:9092
+{% endif %}
 {% endif %}
 
 # A comma-separated list of the names of the listeners used by the controller.
