@@ -272,6 +272,7 @@
   check_mode: false
   delegate_to: "{{ groups['kafka__group_broker_nodes'] | first }}"
   run_once: true
+  when: kafka_topics is defined and kafka_topics | length > 0
 
 - name: Create kafka topics
   ansible.builtin.command:
